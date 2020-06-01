@@ -3,7 +3,14 @@ require 'line/bot'
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
-  before_action :validate_signature
+  before_action :validate_signature, :check_line_signature
+
+  def check_line_signature
+    channel_secret = ENV["LINE_CHANNEL_SECRET"]
+    http_request_body = request.raw_post
+    hash = OpenSSL::HMAC::digest(OpenSSL::Digest::SHA256.new, channel_secret, http_request_body)
+    signature = Base64.strict_encode64(hash)
+  end
 
   def validate_signature
     body = request.body.read
