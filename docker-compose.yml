@@ -9,6 +9,8 @@ services:
       - "3306:3306"
 
   web:
+    stdin_open: true
+    tty: true
     build: .
     command: rails s -p 3000 -b '0.0.0.0'
     volumes:
