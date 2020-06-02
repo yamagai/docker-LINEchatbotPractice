@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class WebhookController < ApplicationController
 
   def callback
@@ -11,13 +13,11 @@ class WebhookController < ApplicationController
     }
     response = client.get_message_content(messageId)
 
-    case response
-    when Net::HTTPSuccess then
-      tf = Tempfile.open("content")
-      tf.write(response.body)
-    else
-      p "#{response.code} #{response.body}"
-    end
+    output_path = '/app_name/tmp/images/file.jpg'
 
+    File.open(output_path, 'w+b') do |fp|
+      fp.write(response.body)
+    end
+    
   end
 end
