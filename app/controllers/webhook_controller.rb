@@ -13,11 +13,11 @@ class WebhookController < ApplicationController
     }
     response = client.get_message_content(messageId)
 
-    output_path = '/app_name/tmp/images/file.jpg'
+    output_path = Rails.root.to_s + '/tmp/images/file.jpg'
 
     File.open(output_path, 'w+b') do |fp|
       fp.write(response.body)
     end
-    
+
   end
 end
