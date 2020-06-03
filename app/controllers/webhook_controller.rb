@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class WebhookController < ApplicationController
 
   def callback
@@ -18,6 +16,8 @@ class WebhookController < ApplicationController
     File.open(output_path, 'w+b') do |fp|
       fp.write(response.body)
     end
+
+    client.reply_message(event['replyToken'], output_path)
 
   end
 end

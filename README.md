@@ -1,24 +1,7 @@
 # README
+LINEで送信されてきた画像をローカルに保存するLINEchatbotです
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+現在チーム開発中のアルバム共有アプリMemopic(https://github.com/MONAKA0721/Memopic)に
+LINE Messaging APIを導入するため、練習の場として作成しました。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby on Rails, Docker, Heroku, LINE Messaging API
